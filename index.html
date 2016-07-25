@@ -29,6 +29,46 @@
       <script src="assets/js/html5shiv.js"></script>
       <script src="assets/js/respond.min.js"></script>
     <![endif]-->
+    <style> 
+    .hide-bullets {
+    list-style:none;
+    margin-left: -40px;
+    margin-top:20px;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.carousel-inner>.item>img, .carousel-inner>.item>a>img {
+    width: 100%;
+}
+</style>
+<script>
+  jQuery(document).ready(function($) {
+ 
+        $('#myCarousel').carousel({
+                interval: 5000
+        });
+ 
+        //Handles the carousel thumbnails
+        $('[id^=carousel-selector-]').click(function () {
+        var id_selector = $(this).attr("id");
+        try {
+            var id = /-(\d+)$/.exec(id_selector)[1];
+            console.log(id_selector, id);
+            jQuery('#myCarousel').carousel(parseInt(id));
+        } catch (e) {
+            console.log('Regex failed!', e);
+        }
+    });
+        // When the carousel slides, auto update the text
+        $('#myCarousel').on('slid.bs.carousel', function (e) {
+                 var id = $('.item.active').data('slide-number');
+                $('#carousel-text').html($('#slide-content-'+id).html());
+        });
+});	
+</script>
   </head>
 
   <body data-spy="scroll" data-offset="0" data-target="#nav">
@@ -353,40 +393,147 @@
                   <span class="glyphicon glyphicon-hourglass"></span> Coming Soon... 
                 </a>
 
-				<div class="col-lg-6">
-					<p><img class="img-responsive" src="assets/img/port01.jpg" alt=""></p>
-				</div>
-				<div class="col-lg-3">
-					<p>CANALS OF ENGLAND</p>
-				<p><more>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.<br/><br/>
-					<sm><i class="icon-tag"></i> design</sm></more> 
-				</p>
-				</div>
-	
-				<div class="col-lg-6 col-lg-offset-3">
-					<p><img class="img-responsive" src="assets/img/port02.jpg" alt=""></p>
-				</div>
-				<div class="col-lg-3">
-						<p>SANKEY</p>
-					<p><more>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.<br/><br/>
-						<sm><i class="icon-tag"></i> front-end</sm></more> 
-					</p>
-				</div>
-				
-				<div class="col-lg-6 col-lg-offset-3">
-					<p><img class="img-responsive" src="assets/img/port03.jpg" alt=""></p>
-				</div>
-				<div class="col-lg-3">
-						<p>WE GROW</p>
-					<p><more>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.<br/><br/>
-						<sm><i class="icon-tag"></i> web design</sm></more> 
-					</p>
-				</div>
-		
+
 		</div><!--/.row -->
 		<br>
-		<br>
-	</div><!--/.container -->
+
+<div class="container">
+    <div id="main_area">
+        <!-- Slider -->
+        <div class="row">
+            <div class="col-sm-6" id="slider-thumbs">
+                <!-- Bottom switcher of slider -->
+                <ul class="hide-bullets">
+                    <li class="col-sm-3">
+                        <a class="thumbnail" id="carousel-selector-0">
+                            <img src="assets/img/1.png">
+                        </a>
+                    </li>
+
+                    <li class="col-sm-3">
+                        <a class="thumbnail" id="carousel-selector-2"><img src="assets/img/2.png"></a>
+                    </li>
+
+                    <li class="col-sm-3">
+                        <a class="thumbnail" id="carousel-selector-3"><img src="assets/img/3.png"></a>
+                    </li>
+
+                    <li class="col-sm-3">
+                        <a class="thumbnail" id="carousel-selector-4"><img src="assets/img/4.png"></a>
+                    </li>
+
+                    <li class="col-sm-3">
+                        <a class="thumbnail" id="carousel-selector-5"><img src="assets/img/6.png"></a>
+                    </li>
+                    <li class="col-sm-3">
+                        <a class="thumbnail" id="carousel-selector-6"><img src="assets/img/7.png"></a>
+                    </li>
+
+                    <li class="col-sm-3">
+                        <a class="thumbnail" id="carousel-selector-7"><img src="assets/img/8.png"></a>
+                    </li>
+
+                    <li class="col-sm-3">
+                        <a class="thumbnail" id="carousel-selector-8"><img src="assets/img/9.png"></a>
+                    </li>
+
+                    <li class="col-sm-3">
+                        <a class="thumbnail" id="carousel-selector-9"><img src="assets/img/10.png"></a>
+                    </li>
+                    <li class="col-sm-3">
+                        <a class="thumbnail" id="carousel-selector-10"><img src="assets/img/11.png"></a>
+                    </li>
+
+                    <li class="col-sm-3">
+                        <a class="thumbnail" id="carousel-selector-11"><img src="assets/img/12.png"></a>
+                    </li>
+
+                    <li class="col-sm-3">
+                        <a class="thumbnail" id="carousel-selector-12"><img src="assets/img/13.png"></a>
+                    </li>
+
+                    <li class="col-sm-3">
+                        <a class="thumbnail" id="carousel-selector-13"><img src="assets/img/14.png"></a>
+                    </li>
+                    <li class="col-sm-3">
+                        <a class="thumbnail" id="carousel-selector-14"><img src="assets/img/15.png"></a>
+                    </li>
+
+                    <li class="col-sm-3">
+                        <a class="thumbnail" id="carousel-selector-15"><img src="assets/img/16.png"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-6">
+                <div class="col-xs-12" id="slider">
+                    <!-- Top part of the slider -->
+                    <div class="row">
+                        <div class="col-sm-12" id="carousel-bounding-box">
+                            <div class="carousel slide" id="myCarousel">
+                                <!-- Carousel items -->
+                                <div class="carousel-inner">
+                                    <div class="active item" data-slide-number="0">
+                                        <img src="assets/img/1.png"></div>
+
+                                    <div class="item" data-slide-number="2">
+                                        <img src="assets/img/2.png"></div>
+
+                                    <div class="item" data-slide-number="3">
+                                        <img src="assets/img/3.png"></div>
+
+                                    <div class="item" data-slide-number="4">
+                                        <img src="assets/img/4.png"></div>
+
+                                    <div class="item" data-slide-number="5">
+                                        <img src="assets/img/6.png"></div>
+                                    
+                                    <div class="item" data-slide-number="6">
+                                        <img src="assets/img/7.png"></div>
+                                    
+                                    <div class="item" data-slide-number="7">
+                                        <img src="assets/img/8.png"></div>
+                                    
+                                    <div class="item" data-slide-number="8">
+                                        <img src="assets/img/9.png"></div>
+                                    
+                                    <div class="item" data-slide-number="9">
+                                        <img src="assets/img/10.png"></div>
+                                    
+                                    <div class="item" data-slide-number="10">
+                                        <img src="assets/img/11.png"></div>
+                                    
+                                    <div class="item" data-slide-number="11">
+                                        <img src="assets/img/12.png"></div>
+                                    
+                                    <div class="item" data-slide-number="12">
+                                        <img src="assets/img/13.png"></div>
+
+                                    <div class="item" data-slide-number="13">
+                                        <img src="assets/img/14.png"></div>
+
+                                    <div class="item" data-slide-number="14">
+                                        <img src="assets/img/15.png"></div>
+
+                                    <div class="item" data-slide-number="15">
+                                        <img src="assets/img/16.png"></div>
+                                </div>
+                                <!-- Carousel nav -->
+                                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left"></span>
+                                </a>
+                                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/Slider-->
+        </div>
+
+    </div>
+</div>	</div><!--/.container -->
 	
 
 
